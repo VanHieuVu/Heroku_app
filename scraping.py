@@ -128,10 +128,11 @@ def RE(type):
     date = datetime.datetime.today().strftime('%Y-%m-%d')
 
     conn = psycopg2.connect(
-    host = "localhost",
-    database = f"{type}",
-    user = "postgres",
-    password = "1234",
+        host = "hattie.db.elephantsql.com",
+        user = "mfntuevp",
+        database = "mfntuevp",
+        options= f"-c search_path={type},public",
+        password = "gNe80A3c_s6UUO8a2o7y16OuQ2jwe_3W",
     )
     #cursor
     cur = conn.cursor()
@@ -164,4 +165,4 @@ def RE(type):
     conn.close()
     
     
-    return('done') 
+    return('done')

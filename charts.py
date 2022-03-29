@@ -1,3 +1,4 @@
+from msilib import schema
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -6,10 +7,11 @@ import psycopg2
 def selected(date: str, type:str):
     
     conn = psycopg2.connect(
-    host = "localhost",
-    database = f"{type}",
-    user = "postgres",
-    password = "1234",
+    host = "hattie.db.elephantsql.com",
+    user = "mfntuevp",
+    database = "mfntuevp",
+    options= f"-c search_path={type},public",
+    password = "gNe80A3c_s6UUO8a2o7y16OuQ2jwe_3W",
     )
     
     cur = conn.cursor()
@@ -37,4 +39,4 @@ def selected(date: str, type:str):
                             size_max=30, zoom=10, mapbox_style="carto-positron"
                             )
     
-    return(fig) 
+    return(fig)
