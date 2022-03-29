@@ -1,4 +1,3 @@
-from msilib import schema
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -18,7 +17,6 @@ def selected(date: str, type:str):
     cur.execute(f"""
                 SELECT *
                 FROM "{date}"
-            
                 """
             )
     rows = cur.fetchall()

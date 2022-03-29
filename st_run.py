@@ -22,7 +22,7 @@ with col1:
             with col2:
                 st.info("Don't have required data.")
                 st.warning("Don't have required data -> initiating screaping. Data scraping is usefull if todays data is missing.")
-                with st.spinner('It might take some time. Go take drink some coffee! OwO'):
+                with st.spinner('It might take some time. Go drink coffee or take a break, BAKA! OwO'):
                     scraping.RE(type)
                 st.success('Scraping is succesfully finished! Resubmit to see result.')
                      
