@@ -157,10 +157,15 @@ def RE(type):
         cur.execute(
             f"""
             INSERT INTO "{date}"(Name, Price, Distance, Space, Lat, Lng, Price_mSqr)
-            VALUES ({i+1},{df.iloc[:,1][i]},{df.iloc[:,2][i]},{df.iloc[:,3][i]},{df.iloc[:,4][i]},{df.iloc[:,5][i]}, {df.iloc[:,6][i]})
-            
+            VALUES ({i+1},{df.iloc[:,1][i]},{df.iloc[:,2][i]},{df.iloc[:,3][i]},{df.iloc[:,4][i]},{df.iloc[:,5][i]}, {df.iloc[:,6][i]})  
             """
         )
+    cur.execute(
+        f""""
+        DELETE FROM {type}."{date}"
+        WHERE Price = 0 OR Price = 1
+        """
+    )
     conn.commit()
     conn.close()
     
