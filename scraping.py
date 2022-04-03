@@ -147,8 +147,7 @@ def RE(type):
                         Space numeric,
                         Lat numeric,
                         Lng numeric,
-                        Price_mSqr numeric,
-                        PRIMARY KEY (Name)
+                        Price_mSqr numeric
                     )
                 """   
                 )
@@ -157,13 +156,13 @@ def RE(type):
         cur.execute(
             f"""
             INSERT INTO "{date}"(Name, Price, Distance, Space, Lat, Lng, Price_mSqr)
-            VALUES ({i+1},{df.iloc[:,1][i]},{df.iloc[:,2][i]},{df.iloc[:,3][i]},{df.iloc[:,4][i]},{df.iloc[:,5][i]}, {df.iloc[:,6][i]})  
+            VALUES ('{df.iloc[:,0][i]}',{df.iloc[:,1][i]},{df.iloc[:,2][i]},{df.iloc[:,3][i]},{df.iloc[:,4][i]},{df.iloc[:,5][i]}, {df.iloc[:,6][i]})  
             """
-        )
+        )        
     cur.execute(
         f"""
         DELETE FROM {type}."{date}"
-        WHERE price = 0 OR price = 1 OR space = 1 OR space = 0
+        WHERE price = 0 OR price = 1 OR space = 1 OR space = 0 OR MAX(price_msqr) > (SELECT price_msqr FROM {type}."{date}" ORDER BY price_msqr DESC LIMIT 1 OFFSET 1)*2
         """
     )
     conn.commit()
