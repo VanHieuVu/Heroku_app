@@ -162,7 +162,7 @@ def RE(type):
     cur.execute(
         f"""
         DELETE FROM {type}."{date}"
-        WHERE price = 0 OR price = 1 OR space = 1 OR space = 0
+        WHERE Price = 0 OR Price = 1 OR Space = 1 OR Space = 0
         """
     )
     conn.commit()
