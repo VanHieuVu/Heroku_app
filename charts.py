@@ -34,7 +34,7 @@ def selected(date: str, type:str):
     fig = px.scatter_mapbox(df, lat="Lat", lon="Lng", color="Price_mSqr", 
                             size="Distance", 
                             color_continuous_scale=px.colors.sequential.Bluered, 
-                            size_max=30, zoom=10, mapbox_style="carto-positron"
+                            size_max=30, zoom=9, mapbox_style="open-street-map"
                             )
     
     return(fig)
